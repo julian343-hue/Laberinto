@@ -33,7 +33,22 @@ class Enemy(GameSprite):
           if self.direction == "izquierda":
                self.rect.x -= self.speed
           else:
-               self.rect.x += self.speed 
+               self.rect.x += self.speed
+
+class Wall(sprite.Sprite):
+    def __init__(self. color_1, color_2, color_3, wall_x, wall_y, wall_width, wall_hei):
+        super().__init__()
+        self.color1 = color1
+        self.width = wall_width
+        self.height = player_x
+        self.image = Surface((self.width, self.height))
+        self.image.fill((color_1, color_2, color_3))
+        self.rect = self.image.get_rect()
+        self.rect.x = wall_x
+        self.rect.y = wall_y
+    def draw_wall(self):
+        window.blit(self.image,(self.rect.x, self.rect.y))
+
 
 
 
@@ -50,6 +65,10 @@ background = transform.scale(image.load("background.jpg"), (win_width, win_heigh
 packman = Player('hero.png', 5, win_height - 80, 4)
 monster = Enemy('cyborg.png', win_width - 80, 280, 2)
 final = GameSprite('treasure.png', win_width - 120, win_height - 80, 0)
+
+w1 = Wall(154, 285, 50, 100, 20, 450, 10)
+w2 = Wall(154, 285, 50, 100, 400, 350, 10)
+w3 = Wall(154, 285, 50, 100, 20, 10, 300)
 
 game = True
 clock = time.Clock()
@@ -77,3 +96,4 @@ while game:
 
     display.update()
     clock.tick(FPS)
+    
